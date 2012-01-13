@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * Library class for timeline analysis
+ * meant to be required on analyze.php
+ */
+
 class timeline_bank {
 	
 	/*
@@ -33,7 +39,7 @@ class timeline_bank {
 	
 	function __construct($user_id){
 		
-		//holds daata about how many useres are using a word
+		//holds daata about how many users are using a particular word
 		$this->user_hashtags = array();
 		$this->user_mentions = array();
 		$this->user_words = array();
@@ -52,13 +58,8 @@ class timeline_bank {
 		//hold data we'll need for snapshots
 		$this->user_id = $user_id;
 		$this->snapshot_id = 0;	
-		
-		//incase we need to tap the twitter api
-		//$this->connection = $connection;
-		
-		//connect
-		mysql_connect("localhost", "your user", "user pass") or die(mysql_error());
-		mysql_select_db("db name")or die(mysql_error());
+				
+		//IMPORTANT: We are using mysql connection from config.php that was called on analyze.php
 	}
 	
 	function query($query){
@@ -308,26 +309,21 @@ class timeline_bank {
 	}//end prioritize
 
 
-	public function print_all(){
+	public function print_shortened_result(){
 		echo "<pre>";
-		Echo "Result";
-		print_r($shortened_result);
-		
-		
+		print_r($this->result);
 		echo "<pre>";		
 	}
 
 
 
 
-
-
-
-	public function build_snapshot_and_html(){
+	public function build_snapshot_and_data(){
 		
-		if($this->error == 1){
-			//echo  "<tr class='trend' onClick=''><td class='text'>Opps. There was an error. Please let us know about this to the left.</td><td class=''></td><td class='ct'></td></tr>";
-		}	
+		/*
+		 * The implementation of the function is only an example of how to extract data of trends so that you can build html or json if need be
+		 * 
+		 */
 		
 		$this->create_snapshot();
 		
@@ -408,7 +404,7 @@ class timeline_bank {
 		//user_id
 		$user_id = $this->user_id;
 		
-		//token key
+		//create token key
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
 		$size = strlen( $chars );
 		$key = "";
