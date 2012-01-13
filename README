@@ -1,0 +1,15 @@
+Hey there!
+
+This algorithm was built in 54 hours at StartupWeekend Lexington by @ThomasTommyTom (http://www.tommycrush.com). Here's the most basic explanation: Twitter has trends for a country, state, or cities. But this algorithm finds what's trending in your OWN circle of friends.
+
+Examples:
+1) the word "tonight" trends a lot on weekends, as people are talking about their nightlife plans.
+2) the phrase "startup weekend" was trending in my circle of friends because a lot of the people that I follow are programmers as well.
+3) the name @benrector was trending recently because several of my friends were tweeting at him in the same timespan.
+
+
+It is not necessarily meant to be easily ported into other applications, but rather as a reference of how to hack something like this together.
+
+
+The code is not the cleanest in the world, keep in mind this was built in a weekend.
+
